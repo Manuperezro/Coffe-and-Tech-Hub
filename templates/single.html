@@ -13,18 +13,25 @@ This is the single article page
 {% block headlines %}
 
 
-
 <div class="col-sm mb-3">
   <div class="card" style="width: 18rem;">
 
     <div class="card-body">
       
-      <p class="card-text">{{description}}</p>
+      <p class="card-text" id="headline"></p>
   
     </div>
   </div>
 </div>
 
+
+<script>
+
+var description = localStorage.getItem("{{publishedAt}}")
+
+document,getElementById("headline").innerHTML = url
+
+</script>
 
 
 {% endblock %}
