@@ -16,7 +16,7 @@
             <div class="card-body">
             <h5 class="card-title">{{headline.title}}</h5>
             <p class="card-text">{{headline.description}}</p>
-            <a href="{{url_for('single',publishedAt=headline.publishedAt)}}" class="btn btn-primary">Read</a>
+            <a href="{headline.url}" class="btn btn-primary">{{headline.url}}</a>
             </div>
         </div>
 </div>
