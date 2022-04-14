@@ -38,12 +38,12 @@ def category(category):
     return render_template("category.html", headlines=headlines)
 
 
-# @app.route("/single/<publishedAt>")
-# def single(publishedAt):
-#     """
-#     Open a new page to read the full article from a card
-#     """
-#     return render_template('single.html', publishedAt=publishedAt)
+@app.route("/single/<publishedAt>")
+def single(publishedAt):
+    """
+    Open a new page to read the full article from a card
+    """
+    return render_template('single.html', publishedAt=publishedAt)
 
 
 if __name__ == "__main__":
