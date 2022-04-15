@@ -11,12 +11,12 @@
 {% for headline in headlines.articles %}
 
 <div class="col-sm mb-3">
-        <div class="card" style="width: 18rem;">
+        <div class="card qual-height" style="width: 18rem;">
             <img src="{{headline.urlToImage}}" class="card-img-top" alt="...">
             <div class="card-body">
             <h5 class="card-title">{{headline.title}}</h5>
             <p class="card-text">{{headline.description}}</p>
-            <a href="{headline.url}" class="btn btn-primary">{{headline.url}}</a>
+            <a href="{{headline.url}}" class="btn btn-primary">Read more</a>
             </div>
         </div>
 </div>
