@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, session
+import os 
 import requests 
 
 
@@ -46,5 +47,16 @@ def single(publishedAt):
     return render_template('single.html', publishedAt=publishedAt)
 
 
+@app.route("/todo.html")
+def todo():
+    """
+    Open a new page to the todo list page
+    """
+    return render_template("todo.html", page_title="Todo-List")
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(
+        host=os.environ.get("IP","0.0.0.0"),
+        port=int(os.environ.get("PORT","5000")),
+        debug=True)
