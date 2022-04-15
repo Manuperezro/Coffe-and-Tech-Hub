@@ -1,10 +1,54 @@
 {% extends "index.html" %}
 
+<!--to add the title in the home page-->
+
 {% block title %}
 
-<h2>{{ page_title }}</h2>
+This is the Home page
 
 {% endblock %}
 
+{% block Section %}
+
+<h2 class="section-heading text-uppercase">General News</h2>
+
+{% endblock %}
+
+<!--Loop to create the page with all articles-->
+
+{% block masthead %}
+
+<header class="masthead">
+    <div class="container text-warning">
+
+        <h1>Organize your day by priorities</h1>
+
+        <div class="row">
+            <div class="col-12  col-md-4 col-lg-4   border p-4">
+                <div >
+                    <form id="todo-form">
+                        <input id="title-input" placeholder="Enter Todo" class="form-control" required><br>
+                        <input id="date-input" type="date" class="form-control"><br>
+                        <input id="time-input" type="time" class="form-control">
+                        <br>
+                        <div class="text-center">
+                            <button type="submit" class="mx-auto btn btn-primary text-nowrap">Add Todo</button>
+                        </div>
+
+                    </form>
+                </div>
+            
+            </div>
 
 
+            <div class="col-12 col-md-8 col-lg-8 border rounded p-4" id="todo_list">
+
+    
+            </div>
+
+        </div>
+
+    </div>
+</header>
+
+{% endblock %}

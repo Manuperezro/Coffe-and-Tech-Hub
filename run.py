@@ -7,7 +7,6 @@ app = Flask(__name__)
 # route == link == url
 app.secret_key= "My_Super_Secret_Key"
 
-
 @app.route("/")
 def main():
     # articles = [{"title1":"title1", "text1":"text1"},{"title2":"title2", "text2":"text2"},{"title3":"title3", "text3":"text3"}]
@@ -35,16 +34,7 @@ def category(category):
         # {'2020-09-09T07:04:00Z':"fhhghfhgfh",'2020-09-09T07:04:00Z':"gfhgfhgfhfj"}
     # store the descriptions in flask session
     session['url'] = sessionUrl 
-    # return headlines
     return render_template("category.html", headlines=headlines)
-
-
-@app.route("/single/<publishedAt>")
-def single(publishedAt):
-    """
-    Open a new page to read the full article from a card
-    """
-    return render_template('single.html', publishedAt=publishedAt)
 
 
 @app.route("/todo.html")
