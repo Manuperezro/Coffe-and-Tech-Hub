@@ -23,11 +23,11 @@ This is the Home page
 
         <h1>Organize your day by priorities</h1>
 
-        <form action="">
+        <form action="/add" method="POST">
             <div>
 
                 <label for="">Todo Today</label>
-                <input type="text" name="title" placeholder="Enter your Todo..."><br>
+                <input type="text" name="todo_title" id="todo_title" placeholder="Enter your Todo..."><br>
                 <button type="Submit">Add</button>
 
             </div>
@@ -47,8 +47,8 @@ This is the Home page
 
         {% endif %}
 
-        <a href="">Update</a>
-        <a href="">Deleted</a>
+        <a href="/update/{{ todo.id }}">Update</a>
+        <a href="/delete/{{ todo.id }}">Deleted</a>
          
         {% endfor %}
        

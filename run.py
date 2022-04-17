@@ -1,9 +1,10 @@
-from flask import Flask, render_template, url_for, session
+from flask import Flask, render_template, url_for, session, request
 from flask_sqlalchemy import SQLAlchemy
+from flask import redirect
 import os
 import requests
 
-# route == link == url
+# route == link == urls
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -56,6 +57,34 @@ def todo():
     todo_list = Todo.query.all()
     print(todo_list)
     return render_template("todo.html", todo_list=todo_list)
+
+
+@app.route("/add", methods=["POST"])
+def add():
+    # add new todo to the list
+    title = request.form.get("todo_title")
+    new_todo = Todo(title=title, complete=False)
+    db.session.add(new_todo)
+    db.session.commit()
+    return redirect(url_for("todo"))
+
+
+@app.route("/update/<int:todo_id>")
+def update(todo_id):
+    # add new todo to the list
+    todo = Todo.query.filter_by(id=todo_id).first()
+    todo.complete = not todo.complete
+    db.session.commit()
+    return redirect(url_for("todo"))
+    
+
+@app.route("/delete/<int:todo_id>")
+def delete(todo_id):
+    # add new todo to the list
+    todo = Todo.query.filter_by(id=todo_id).first()
+    db.session.delete(todo)
+    db.session.commit()
+    return redirect(url_for("todo"))
 
 
 if __name__ == "__main__":
