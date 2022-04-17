@@ -1,11 +1,21 @@
 from flask import Flask, render_template, url_for, session
-import os 
-import requests 
+from flask_sqlalchemy import SQLAlchemy
+import os
+import requests
 
-
-app = Flask(__name__)
 # route == link == url
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+app.config['SQALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 app.secret_key= "My_Super_Secret_Key"
+
+
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(100))
+    complete = db.Column(db.Boolean)
+
 
 @app.route("/")
 def main():
@@ -42,10 +52,14 @@ def todo():
     """
     Open a new page to the todo list page
     """
+    #show all todos:
+    todo_list = Todo.query.all()
+    print(todo_list)
     return render_template("todo.html", page_title="Todo-List")
 
 
 if __name__ == "__main__":
+    db.create_all()
     app.run(
         host=os.environ.get("IP","0.0.0.0"),
         port=int(os.environ.get("PORT","5000")),

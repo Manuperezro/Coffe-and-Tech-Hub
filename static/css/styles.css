@@ -11409,12 +11409,24 @@ p {
     margin-right: 0;
   }
 }
-header.masthead {
+.masthead {
   padding-top: 10.5rem;
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
   background-image: url("../assets/img/coffeandtech-land.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+
+.masthead2 {
+  padding-top: 10.5rem;
+  padding-bottom: 6rem;
+  text-align: center;
+  color: #fff;
+  background-color: grey;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
