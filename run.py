@@ -55,7 +55,7 @@ def todo():
     #show all todos:
     todo_list = Todo.query.all()
     print(todo_list)
-    return render_template("todo.html", page_title="Todo-List")
+    return render_template("todo.html", todo_list=todo_list)
 
 
 if __name__ == "__main__":

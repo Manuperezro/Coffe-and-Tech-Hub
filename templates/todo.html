@@ -24,17 +24,33 @@ This is the Home page
         <h1>Organize your day by priorities</h1>
 
         <form action="">
-
             <div>
 
                 <label for="">Todo Today</label>
-                <input type="text" name="title" placeholder="Enter your Todo...">
+                <input type="text" name="title" placeholder="Enter your Todo..."><br>
                 <button type="Submit">Add</button>
 
             </div>
-
-
         </form>
+
+        {% for todo in todo_list %}
+        
+        <p> {{ todo.id }} |  {{ todo.title }}</p>
+
+        {% if todo.complete == false %}
+
+        <span>Not complete</span>
+
+        {% else %}
+
+        <span>Complete</span>
+
+        {% endif %}
+
+        <a href="">Update</a>
+        <a href="">Deleted</a>
+         
+        {% endfor %}
        
     </div>
 </header>
