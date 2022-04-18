@@ -69,8 +69,8 @@ def add():
     return redirect(url_for("todo"))
 
 
-@app.route("/update/<int:todo_id>")
-def update(todo_id):
+@app.route("/complete/<int:todo_id>")
+def complete(todo_id):
     # add new todo to the list
     todo = Todo.query.filter_by(id=todo_id).first()
     todo.complete = not todo.complete

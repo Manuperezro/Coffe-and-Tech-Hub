@@ -19,39 +19,52 @@ This is the Home page
 {% block masthead %}
 
 <header class="masthead2">
-    <div class="container text-warning">
 
-        <h1>Organize your day by priorities</h1>
+    <div class="container p-4 stext-warning border rounded">
 
-        <form action="/add" method="POST">
-            <div>
+        <h1 class="text-center mb-4">Organize your day by priorities</h1>
 
-                <label for="">Todo Today</label>
-                <input type="text" name="todo_title" id="todo_title" placeholder="Enter your Todo..."><br>
-                <button type="Submit">Add</button>
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 border p-4">
+                <form action="/add" method="POST">
+                    <label for="">Todo Today</label>
+                    <input class="form-control" type="text" name="todo_title" id="todo_title"
+                        placeholder="Enter your Todo..."><br>
+                    <input class="form-control" type="date" name="todo_date" id="todo_date"><br>
+                    <input class="form-control" type="time" name="todo_time" id="todo_time">
+                    <br>
+                    <div class="text-center">
+                        <button class="btn btn-primary text-nowrap" type="Submit">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-md-8 col-lg-8 border p4">
+
+                <div class="todo-item p-4 bg-light border border-light">
+                {% for todo in todo_list %}
+
+                <p class="text-dark"> {{ todo.id }} | {{ todo.title }}</p>
+
+                {% if todo.complete == false %}
+
+                <span class="text-danger">Not complete</span>
+
+                {% else %}
+
+                <span class="text-success">Complete</span>
+
+                {% endif %}
+
+                <a href="/complete/{{ todo.id }}">Complete</a>
+                <a href="/Edit/{{ todo.id }}">Edit</a>
+                <a href="/delete/{{ todo.id }}">Deleted</a>
+
+                {% endfor %}
+              </div>
 
             </div>
-        </form>
+        </div>
 
-        {% for todo in todo_list %}
-        
-        <p> {{ todo.id }} |  {{ todo.title }}</p>
-
-        {% if todo.complete == false %}
-
-        <span>Not complete</span>
-
-        {% else %}
-
-        <span>Complete</span>
-
-        {% endif %}
-
-        <a href="/update/{{ todo.id }}">Update</a>
-        <a href="/delete/{{ todo.id }}">Deleted</a>
-         
-        {% endfor %}
-       
     </div>
 </header>
 

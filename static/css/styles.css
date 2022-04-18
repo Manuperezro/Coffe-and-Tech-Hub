@@ -11426,7 +11426,7 @@ p {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-color: grey;
+  background-image: url("../assets/img/todos.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
