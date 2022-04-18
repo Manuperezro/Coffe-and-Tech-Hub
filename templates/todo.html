@@ -8,13 +8,6 @@ This is the Home page
 
 {% endblock %}
 
-{% block Section %}
-
-<h2 class="section-heading text-uppercase">General News</h2>
-
-{% endblock %}
-
-<!--Loop to create the page with all articles-->
 
 {% block masthead %}
 
@@ -40,7 +33,7 @@ This is the Home page
             </div>
             <div class="col-12 col-md-8 col-lg-8 border p4">
 
-                <div class="todo-item p-4 bg-light border border-light">
+                <div class="todo-item p-4 bg-light border border-light opacity-75">
                 {% for todo in todo_list %}
 
                 <p class="text-dark"> {{ todo.id }} | {{ todo.title }}</p>
