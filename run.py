@@ -18,6 +18,13 @@ class Todo(db.Model):
     complete = db.Column(db.Boolean)
 
 
+class Ideas(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(100))
+    send = db.Column(db.Boolean)
+
+# News Api routes--
+
 @app.route("/")
 def main():
     # articles = [{"title1":"title1", "text1":"text1"},{"title2":"title2", "text2":"text2"},{"title3":"title3", "text3":"text3"}]
@@ -47,6 +54,30 @@ def category(category):
     session['url'] = sessionUrl 
     return render_template("category.html", headlines=headlines)
 
+
+# Ideas routes--   
+
+@app.route("/ideas.html")
+def Idea():
+    """
+    Open a new page to the Ideas page
+    """
+    #show all todos:
+    ideas_list = Ideas.query.all()
+    print(ideas_list)
+    return render_template("ideas.html", ideas_list=ideas_list)
+
+
+@app.route("/add_idea", methods=["POST"])
+def add_idea():
+    # add new idea to the list
+    title = request.form.get("idea_title")
+    new_idea = Idea(title=title, complete=False)
+    db.session.add(new_idea)
+    db.session.commit()
+    return redirect(url_for("idea"))   
+
+# Todo App routes--
 
 @app.route("/todo.html")
 def todo():
@@ -86,7 +117,7 @@ def delete(todo_id):
     db.session.commit()
     return redirect(url_for("todo"))
 
-
+    
 if __name__ == "__main__":
     db.create_all()
     app.run(

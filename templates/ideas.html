@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+
+<!--to add the title in the home page-->
+
+{% block title %}
+
+This is the Home page
+
+{% endblock %}
+
+
+{% block masthead %}
+
+<header class="masthead3">
+
+    <div class="container p-4 stext-warning border rounded">
+
+        <h1 class="text-center mb-4">The Craziest Thoughts Becomes The Best Ideas </h1>
+
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 border p-4">
+                <form action="/add" method="POST">
+                    <label for="">New Ideas</label>
+                    <input class="form-control" type="text" name="todo_title" id="todo_title"
+                        placeholder="Enter your Todo..."><br>
+                    <br>
+                    <div class="text-center">
+                        <button class="btn btn-primary text-nowrap" type="Submit">Add</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12 col-md-8 col-lg-8 border p4">
+
+                <div class="todo-item p-4 bg-light border border-light opacity-75">
+                {% for todo in todo_list %}
+
+                <p class="text-dark"> {{ idea.id }} | {{ idea.title }}</p>
+
+                {% if idea.complete == false %}
+
+                <span class="text-danger">Not complete</span>
+
+                {% else %}
+
+                <span class="text-success">Complete</span>
+
+                {% endif %}
+
+                <a href="/complete/{{ idea.id }}">Complete</a>
+                <a href="/Edit/{{ idea.id }}">Edit</a>
+                <a href="/delete/{{ idea.id }}">Deleted</a>
+
+                {% endfor %}
+              </div>
+
+            </div>
+        </div>
+
+    </div>
+</header>
+
+{% endblock %}
