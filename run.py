@@ -8,8 +8,9 @@ import requests
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
 app.config['SQALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
 app.secret_key= "My_Super_Secret_Key"
+db = SQLAlchemy(app)
+
 
 
 class Todo(db.Model):
@@ -21,6 +22,10 @@ class Todo(db.Model):
 class Ideas(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100))
+
+# class List(db.Model):
+#     id = db.Column(db.Integer, primary_key = True)
+#     Idea_list =  Ideas.query.all()
 
 # News Api routes--
 
@@ -63,7 +68,6 @@ def Idea():
     """
     #show all todos:
     ideas_list = Ideas.query.all()
-    print(ideas_list)
     return render_template("ideas.html", ideas_list=ideas_list)
 
 
@@ -85,8 +89,15 @@ def todo():
     """
     #show all todos:
     todo_list = Todo.query.all()
-    print(todo_list)
     return render_template("todo.html", todo_list=todo_list)
+
+
+@app.route("/list")
+def ideas_list():
+    # Show the list of todos list
+    title = request.form.get("todo_title")
+    new_todo = Todo(title=title, complete=False)
+    return redirect(url_for("Ideas", ideas_list=ideas_list))
 
 
 @app.route("/add", methods=["POST"])
@@ -101,7 +112,7 @@ def add():
 
 @app.route("/complete/<int:todo_id>")
 def complete(todo_id):
-    # add new todo to the list
+    # mark as completed the todos
     todo = Todo.query.filter_by(id=todo_id).first()
     todo.complete = not todo.complete
     db.session.commit()
@@ -110,7 +121,7 @@ def complete(todo_id):
 
 @app.route("/delete/<int:todo_id>")
 def delete(todo_id):
-    # add new todo to the list
+    # deleted a todo
     todo = Todo.query.filter_by(id=todo_id).first()
     db.session.delete(todo)
     db.session.commit()

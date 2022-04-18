@@ -32,7 +32,7 @@ This is the Home page
             <div class="col-12 col-md-8 col-lg-8 border p4">
 
                 <div class="todo-item p-4 bg-light border border-light opacity-75">
-                {% for todo in todo_list %}
+                {% for todo in idea_list %}
 
                 <p class="text-dark"> {{ idea.id }} | {{ idea.title }}</p>
 
@@ -46,7 +46,6 @@ This is the Home page
 
                 {% endif %}
 
-                <a href="/complete/{{ idea.id }}">Complete</a>
                 <a href="/Edit/{{ idea.id }}">Edit</a>
                 <a href="/delete/{{ idea.id }}">Deleted</a>
 

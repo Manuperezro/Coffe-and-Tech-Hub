@@ -8,3 +8,9 @@
 
 ## Getting errors from request from flask and request from python ??
     Python Libraty documentation and Flask documentations
+
+## Positon of the cards buttons to the central 
+    No solution yet
+
+## Add buttom from Ideas Open the Todo page.
+   No solution Yet
