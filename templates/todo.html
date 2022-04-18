@@ -12,8 +12,18 @@ This is the Home page
 {% block masthead %}
 
 <header class="masthead2">
-
+    <h1>All Your Good Ideas</h1>
     <div class="container p-4 stext-warning border rounded">
+        <div class="col-12 border p4">
+
+            <div class="todo-item p-4 bg-light border border-light opacity-75">
+
+            </div>
+
+        </div>
+    </div>
+    <div class="container p-4 stext-warning border rounded">
+
 
         <h1 class="text-center mb-4">Organize your day by priorities</h1>
 
@@ -34,26 +44,26 @@ This is the Home page
             <div class="col-12 col-md-8 col-lg-8 border p4">
 
                 <div class="todo-item p-4 bg-light border border-light opacity-75">
-                {% for todo in todo_list %}
+                    {% for todo in todo_list %}
 
-                <p class="text-dark"> {{ todo.id }} | {{ todo.title }}</p>
+                    <p class="text-dark"> {{ todo.id }} | {{ todo.title }}</p>
 
-                {% if todo.complete == false %}
+                    {% if todo.complete == false %}
 
-                <span class="text-danger">Not complete</span>
+                    <span class="text-danger">Not complete</span>
 
-                {% else %}
+                    {% else %}
 
-                <span class="text-success">Complete</span>
+                    <span class="text-success">Complete</span>
 
-                {% endif %}
+                    {% endif %}
 
-                <a href="/complete/{{ todo.id }}">Complete</a>
-                <a href="/Edit/{{ todo.id }}">Edit</a>
-                <a href="/delete/{{ todo.id }}">Deleted</a>
+                    <a href="/complete/{{ todo.id }}">Complete</a>
+                    <a href="/Edit/{{ todo.id }}">Edit</a>
+                    <a href="/delete/{{ todo.id }}">Deleted</a>
 
-                {% endfor %}
-              </div>
+                    {% endfor %}
+                </div>
 
             </div>
         </div>

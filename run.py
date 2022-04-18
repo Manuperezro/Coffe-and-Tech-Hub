@@ -21,7 +21,6 @@ class Todo(db.Model):
 class Ideas(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100))
-    send = db.Column(db.Boolean)
 
 # News Api routes--
 
