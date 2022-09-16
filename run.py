@@ -41,6 +41,8 @@ def main():
     # to return the jason Object un comment retunr headlines 
     # return headlines
     return render_template("home.html", headlines=headlines)
+
+    
 @app.route("/<category>")
 def category(category):
     # articles = [{"title":"title1", "text":"text1"},{"title":"title2", "text":"text2"},{"title":"title3", "text":"text3"}]
